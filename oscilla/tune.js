@@ -16,6 +16,9 @@ partial [ note ] .pitchAmplifier = partial [ note ] .pitchAmplifier || oscilla .
 partial [ note ] .am = partial [ note ] .am || oscilla .createOscillator ();
 partial [ note ] .amAmplifier = partial [ note ] .amAmplifier || oscilla .createGain ();
 
+partial [ note ] .fm = partial [ note ] .fm || oscilla .createOscillator ();
+partial [ note ] .fmAmplifier = partial [ note ] .fmAmplifier || oscilla .createGain ();
+
 partial [ note ] .amplifier = partial [ note ] .amplifier || oscilla .createConstantSource ();
 
 partial [ note ] .pitchAmplifier .gain .value
@@ -23,14 +26,19 @@ partial [ note ] .pitchAmplifier .gain .value
 = 0;
 
 partial [ note ] .pitch .type = partial .attributes .wave;
-partial [ note ] .pitch .frequency .value = oscilla .key [ note ] .frequency;
+
+partial [ note ] .pitch .frequency .value
+= partial [ note ] .fm .frequency .value
+= oscilla .key [ note ] .frequency;
 
 let cents = parseInt ( partial .attributes .detune .value * 100 * oscilla .steps );
 
 if ( cents === 0 )
 cents = -partial [ note ] .pitch .detune .value;
 
-partial [ note ] .pitch .detune .value = cents;
+partial [ note ] .pitch .detune .value
+= partial [ note ] .fm .detune .value
+= cents;
 
 partial .ondetune = ( event ) => {
 
@@ -63,6 +71,8 @@ partial [ note ] .pitch .type = partial .attributes .wave;
 
 partial [ note ] .am .frequency .value = partial .attributes .amFrequency .value;
 
+partial [ note ] .fmAmplifier .gain .value = partial .attributes .fmFrequency .value;
+
 partial [ note ] .amplifier .offset .value = 0;
 
 partial [ note ] .amplifier .connect (
@@ -73,12 +83,26 @@ partial [ note ] .amplifier .connect (
 partial [ note ] .amAmplifier .gain
 );
 
+/*
+partial [ note ] .amplifier .connect (
+partial [ note ] .fmAmplifier .gain
+);
+*/
+
 partial [ note ] .am .connect (
 partial [ note ] .amAmplifier
 );
 
+partial [ note ] .fm .connect (
+partial [ note ] .fmAmplifier
+);
+
 partial [ note ] .amAmplifier .connect (
 partial [ note ] .pitchAmplifier .gain
+);
+
+partial [ note ] .fmAmplifier .connect (
+partial [ note ] .pitch .detune
 );
 
 partial [ note ] .pitch .connect (
@@ -89,6 +113,7 @@ oscilla .destination
 
 partial [ note ] .amplifier .start ();
 partial [ note ] .am .start ();
+partial [ note ] .fm .start ();
 partial [ note ] .pitch .start ();
 
 }

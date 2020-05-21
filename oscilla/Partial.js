@@ -34,7 +34,8 @@ defaults [ name ] .value = defaults [ name ] .offset * defaults [ name ] .coeffi
 [ 
 
 'attack', 'decay', 'release',
-'amFrequency', 'amAttack', 'amDecay', 'amSustain', 'amRelease'
+'amFrequency', 'amAttack', 'amDecay', 'amSustain', 'amRelease',
+'fmFrequency', 'fmAttack', 'fmDecay', 'fmSustain', 'fmRelease'
 
 ] .forEach ( ( name ) => {
 
@@ -50,6 +51,9 @@ defaults [ name ] .value = 0;
 
 defaults .amFrequency .coefficient = 100 / 127;
 defaults .amSustain .coefficient = 100 / 127;
+
+defaults .fmFrequency .coefficient = 100 / 127;
+defaults .fmSustain .coefficient = 100 / 127;
 
 }
 

@@ -1,3 +1,27 @@
+export const establishment = function establishment () {
+
+const setting = this;
+
+let instrument = setting .instruments [ 'carrier' ];
+instrument .attack = 'attack';
+instrument .decay = 'decay';
+instrument .sustain = 'sustain';
+instrument .release = 'release';
+
+instrument = setting .instruments [ 'am' ];
+instrument .attack = 'amAttack';
+instrument .decay = 'amDecay';
+instrument .sustain = 'amSustain';
+instrument .release = 'amRelease';
+
+instrument = setting .instruments [ 'fm' ];
+instrument .attack = 'fmAttack';
+instrument .decay = 'fmDecay';
+instrument .sustain = 'fmSustain';
+instrument .release = 'fmRelease';
+
+};
+
 const increment = 'zxcv';
 
 export const characters = {};

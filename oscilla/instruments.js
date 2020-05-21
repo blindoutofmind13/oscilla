@@ -25,3 +25,16 @@ decay: 'amDecay',
 release: 'amRelease'
 
 } );
+
+instruments .push ( {
+
+oscillator: 'fm',
+synthesizer: 'fmAmplifier',
+parameter: 'gain',
+amplitude: 'fmFrequency',
+sustain: 'fmSustain',
+attack: 'fmAttack',
+decay: 'fmDecay',
+release: 'fmRelease'
+
+} );

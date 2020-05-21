@@ -5,17 +5,9 @@ const setting = this;
 setting .instrument = 'carrier';
 setting .instruments = {};
 
-let instrument = setting .instruments [ setting .instrument ] = {};
-instrument .attack = 'attack';
-instrument .decay = 'decay';
-instrument .sustain = 'sustain';
-instrument .release = 'release';
-
-instrument = setting .instruments [ 'am' ] = {};
-instrument .attack = 'amAttack';
-instrument .decay = 'amDecay';
-instrument .sustain = 'amSustain';
-instrument .release = 'amRelease';
+setting .instruments .carrier = {};
+setting .instruments .am = {};
+setting .instruments .fm = {};
 
 };
 
@@ -34,6 +26,8 @@ switch ( event .character ) {
 case ',': setting .instrument = 'carrier';
 break;
 case '.': setting .instrument = 'am';
+break;
+case '/': setting .instrument = 'fm';
 
 }
 

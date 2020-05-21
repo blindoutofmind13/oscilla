@@ -4,8 +4,12 @@ const setting = this;
 
 setting .instruments .carrier
 .loudness = 'loudness';
+
 setting .instruments .am
 .loudness = 'amFrequency';
+
+setting .instruments .fm
+.loudness = 'fmFrequency';
 
 };
 
