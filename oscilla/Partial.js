@@ -9,15 +9,13 @@ const partial = this;
 const defaults = partial .attributes = {};
 
 defaults .wave = attributes .wave || 'sawtooth';
-defaults .detune = attributes .detune || 0;
-
 defaults .detune = {
 
 min: -5,
 max: 5,
 coefficient: 1,
 offset: 0,
-value: 0
+value: attributes .detune || 0
 
 };
 
@@ -33,7 +31,12 @@ defaults [ name ] .value = defaults [ name ] .offset * defaults [ name ] .coeffi
 
 } );
 
-[ 'attack', 'decay', 'release' ] .forEach ( ( name ) => {
+[ 
+
+'attack', 'decay', 'release',
+'amFrequency', 'amAttack', 'amDecay', 'amSustain', 'amRelease'
+
+] .forEach ( ( name ) => {
 
 defaults [ name ] = {};
 
@@ -45,7 +48,8 @@ defaults [ name ] .value = 0;
 
 } );
 
-defaults .modulation = attributes .modulation || 0;
+defaults .amFrequency .coefficient = 100 / 127;
+defaults .amSustain .coefficient = 100 / 127;
 
 }
 

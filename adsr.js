@@ -6,6 +6,7 @@ characters .events = [ 'adsr', 'envelope' ];
 characters .cast = increment + increment .toUpperCase ();
 characters .action = function action ( event ) {
 
+const setting = this;
 const { oscilla } = this;
 let name;
 
@@ -36,8 +37,13 @@ name = 'release';
 
 }
 
+const instrument = setting .instruments [ setting .instrument ];
+
+if ( !instrument )
+return;
+
 const attribute = {};
-attribute [ name ] = increment .includes ( event .character ) ? 1 : -1;
+attribute [ instrument [ name ] ] = increment .includes ( event .character ) ? 1 : -1;
 
 oscilla .set ( attribute );
 

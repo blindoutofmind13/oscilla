@@ -1,3 +1,5 @@
+import { instruments } from './instruments.js';
+
 export const descriptor = {};
 
 descriptor .enumerable = true;
@@ -11,32 +13,33 @@ return;
 
 for ( const partial of oscilla .partials ) {
 
-partial [ note ] .amplifier .offset
+for ( const instrument of instruments ) {
+
+const { oscillator, synthesizer, parameter, amplitude, sustain, release } = instrument;
+
+partial [ note ] [ synthesizer ] [ parameter ]
 .cancelScheduledValues (
-oscilla .currentTime + partial .attributes .release .value
+oscilla .currentTime + partial .attributes [ release ] .value
 );
 
-partial [ note ] .amplifier .offset
+partial [ note ] [ synthesizer ] [ parameter ]
 .linearRampToValueAtTime (
-partial .attributes .loudness .value * partial .attributes .sustain .value,
+partial .attributes [ amplitude ] .value * partial .attributes [ sustain ] .value,
 oscilla .currentTime
 );
 
-partial [ note ] .amplifier .offset
+partial [ note ] [ synthesizer ] [ parameter ]
 .linearRampToValueAtTime (
 0,
-oscilla .currentTime + partial .attributes .release .value
+oscilla .currentTime + partial .attributes [ release ] .value
 );
 
-partial [ note ] .pitch
+partial [ note ] [ oscillator ]
 .stop (
-oscilla .currentTime + partial .attributes .release .value
+oscilla .currentTime + partial .attributes [ release ] .value
 );
 
-partial [ note ] .modulator
-.stop (
-oscilla .currentTime + partial .attributes .release .value
-);
+}
 
 }
 

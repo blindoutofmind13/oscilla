@@ -24,7 +24,7 @@ attribute .offset > attribute .max ? attribute .max : attribute .offset;
 attribute .value = attribute .coefficient * attribute .offset;
 
 partial .dispatchEvent (
-new CustomEvent ( name, {
+new CustomEvent ( name .toLowerCase (), {
 
 detail: partial
 

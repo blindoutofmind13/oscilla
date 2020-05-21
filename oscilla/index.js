@@ -70,7 +70,7 @@ for ( const event of [
 
 ] ) {
 
-Object .defineProperty ( Oscilla .prototype, 'on' + event, {
+Object .defineProperty ( Oscilla .prototype, 'on' + event .toLowerCase (), {
 
 enumerable: true,
 set: function set ( listener ) {

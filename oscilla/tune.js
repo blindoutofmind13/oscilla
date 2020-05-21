@@ -13,13 +13,13 @@ partial [ note ] = {};
 partial [ note ] .pitch = partial [ note ] .pitch || oscilla .createOscillator ();
 partial [ note ] .pitchAmplifier = partial [ note ] .pitchAmplifier || oscilla .createGain ();
 
-partial [ note ] .modulator = partial [ note ] .modulator || oscilla .createOscillator ();
-partial [ note ] .modulatorAmplifier = partial [ note ] .modulatorAmplifier || oscilla .createGain ();
+partial [ note ] .am = partial [ note ] .am || oscilla .createOscillator ();
+partial [ note ] .amAmplifier = partial [ note ] .amAmplifier || oscilla .createGain ();
 
 partial [ note ] .amplifier = partial [ note ] .amplifier || oscilla .createConstantSource ();
 
 partial [ note ] .pitchAmplifier .gain .value
-= partial [ note ] .modulatorAmplifier .gain .value
+= partial [ note ] .amAmplifier .gain .value
 = 0;
 
 partial [ note ] .pitch .type = partial .attributes .wave;
@@ -43,16 +43,16 @@ oscilla .currentTime + partial .attributes .attack .value
 
 };
 
-oscilla .addEventListener ( 'modulation', ( event ) => {
+partial .onamsustain = ( event ) => {
 
 if ( event .detail === partial )
-partial .modulator .frequency
+partial [ note ] .am .frequency
 .setValueAtTime (
-partial .attributes .modulation,
+partial .attributes .amSustain .value,
 oscilla .currentTime
 );
 
-}, false );
+};
 
 partial .onwave = ( event ) => {
 
@@ -61,7 +61,7 @@ partial [ note ] .pitch .type = partial .attributes .wave;
 
 };
 
-partial [ note ] .modulator .frequency .value = partial .attributes .modulation;
+partial [ note ] .am .frequency .value = partial .attributes .amFrequency .value;
 
 partial [ note ] .amplifier .offset .value = 0;
 
@@ -70,14 +70,14 @@ partial [ note ] .pitchAmplifier .gain
 );
 
 partial [ note ] .amplifier .connect (
-partial [ note ] .modulatorAmplifier .gain
+partial [ note ] .amAmplifier .gain
 );
 
-partial [ note ] .modulator .connect (
-partial [ note ] .modulatorAmplifier
+partial [ note ] .am .connect (
+partial [ note ] .amAmplifier
 );
 
-partial [ note ] .modulatorAmplifier .connect (
+partial [ note ] .amAmplifier .connect (
 partial [ note ] .pitchAmplifier .gain
 );
 
@@ -88,7 +88,7 @@ oscilla .destination
 );
 
 partial [ note ] .amplifier .start ();
-partial [ note ] .modulator .start ();
+partial [ note ] .am .start ();
 partial [ note ] .pitch .start ();
 
 }

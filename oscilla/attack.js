@@ -1,3 +1,5 @@
+import { instruments } from './instruments.js';
+
 export const descriptor = {};
 
 descriptor .enumerable = true;
@@ -13,6 +15,25 @@ oscilla .tune ( note );
 
 for ( const partial of oscilla .partials ) {
 
+for ( const instrument of instruments ) {
+
+const { synthesizer, parameter, amplitude, sustain, attack, decay } = instrument;
+
+partial [ note ] [ synthesizer ] [ parameter ]
+.linearRampToValueAtTime (
+partial .attributes [ amplitude ] .value,
+oscilla .currentTime + partial .attributes [ attack ] .value
+);
+
+partial [ note ] [ synthesizer ] [ parameter ]
+.linearRampToValueAtTime (
+partial .attributes [ amplitude ] .value * partial .attributes [ sustain ] .value,
+oscilla .currentTime + partial .attributes [ attack ] .value + partial .attributes [ decay ] .value
+);
+
+}
+
+/*
 partial [ note ] .amplifier .offset
 .linearRampToValueAtTime (
 partial .attributes .loudness .value,
@@ -24,6 +45,7 @@ partial [ note ] .amplifier .offset
 partial .attributes .loudness .value * partial .attributes .sustain .value,
 oscilla .currentTime + partial .attributes .attack .value + partial .attributes .decay .value
 );
+*/
 
 }
 
