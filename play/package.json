@@ -1,0 +1,14 @@
+{
+  "name": "@teatro13/oscilla",
+  "version": "1.0.0",
+  "author": "Faddy Michel Samaan <faddy@teatro13.com>",
+  "homepage": "https://github.com/teatro13/oscilla",
+  "repository": "github:teatro13/oscilla",
+  "bugs": "https://github.com/teatro13/oscilla/issues",
+  "license": "MIT",
+  "type": "module",
+  "main": "index.js",
+  "files": [
+    "*.js"
+  ]
+}
