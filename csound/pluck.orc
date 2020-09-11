@@ -15,7 +15,27 @@ giDecayMethod = 1
 giParameter1 = .1
 giParameter2 = 10
 
-instr 1
+instr 13
+
+iNotes = p4
+iNote = 0
+iNoteDelay = 0
+
+while iNote < iNotes * 2 do
+
+iNoteDuration = p ( 5 + iNote )
+iNotePitch = p ( 6 + iNote )
+
+event_i "i", "pluck", iNoteDelay, iNoteDuration, iNotePitch
+
+iNoteDelay = iNoteDelay + iNoteDuration
+iNote = iNote + 2
+
+od
+
+endin
+
+instr pluck
 
 kLoudness = giLoudness
 iPitch cps2pch p4, 24
