@@ -8,12 +8,15 @@ contrato .output = new Emitter ();
 
 return function oscilla ( participant, scenarist, cue, blooper ) {
 
+const teatro = this;
+
 scenarist .scenario ( {
 
 name: 'oscilla',
 cast: [ score, wave ],
 setting: {
 
+teatro: teatro,
 prompt: '\n?oscilla\n... ',
 contrato: contrato
 
@@ -25,7 +28,7 @@ establish: true
 
 scenarist .display = 'oscilla';
 
-cue ();
+cue ( '#oscilla #ready' );
 
 } )
 .catch ( ( error ) => {

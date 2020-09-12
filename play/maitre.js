@@ -2,7 +2,6 @@ export const character = {};
 character .events = [ '#maitre', 'maitre' ];
 character .action = function action ( script, cue, blooper ) {
 
-const { participant, argument } = script .details;
 
 switch ( script .action ) {
 
@@ -20,7 +19,7 @@ break;
 
 case '#stamp':
 
-cue ( `contrato play ${ argument }\n` );
+cue ( `contrato play ${ script .details }\n` );
 
 break;
 
