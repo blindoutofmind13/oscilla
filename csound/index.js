@@ -10,17 +10,18 @@ paths: [
 
 '/typist/output.js',
 '/typist/stage.js',
+'/typist/input.js',
 '/typist/input/script.js',
 '/typist/input/action.js',
 '/typist/input/ws.js',
 '/maitre/prompt.js',
 '/typist/prompt.js',
+'/oscilla/csound/pitch.js',
 
 ],
 setting: {
 
 play: 'oscilla.js',
-input: {},
 ws: {
 
 scheme: 'ws',
@@ -28,7 +29,8 @@ host: 'localhost',
 port: 1300,
 target: 'ws'
 
-}
+},
+keys: "qasedrfjikolp;']"
 
 },
 establish: true
