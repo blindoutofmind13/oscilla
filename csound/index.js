@@ -17,6 +17,7 @@ paths: [
 '/maitre/prompt.js',
 '/typist/prompt.js',
 '/oscilla/csound/pitch.js',
+'/oscilla/csound/detune.js',
 
 ],
 setting: {
@@ -30,7 +31,13 @@ port: 1300,
 target: 'ws'
 
 },
-keys: "qasedrfjikolp;']"
+instrument: 1,
+keyboard: {
+
+pitch: "qasedrfjikolp;']",
+detune: 'gh'
+
+}
 
 },
 establish: true

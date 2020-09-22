@@ -10,7 +10,7 @@ play .establishment = function establishment () {
 const setting = this;
 const { teatro, contrato } = setting;
 
-const synthesizer = setting .synthesizer = spawn ( 'csound', [ '-Lstdin', '-odac', 'oscilla.orc', 'oscilla.sco' ] );
+const synthesizer = setting .synthesizer = spawn ( 'csound', [ '-Lstdin', '-odac', '../orc/oscilla.orc', '../sco/blank.sco' ] );
 
 synthesizer .stdin .setEncoding ( encoding );
 synthesizer .stdout .setEncoding ( encoding );
