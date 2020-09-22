@@ -1,4 +1,5 @@
-gkFilterQ init .5
+$TIMBRE(k'FilterQ'.85)
+
 gkFilterRate init .0002
 gkVibratoFrequency init 5
 gkVibratoAmplitude init .01
@@ -16,5 +17,3 @@ aNote moog .15, kPitch, gkFilterQ, gkFilterRate, gkVibratoFrequency, gkVibratoAm
 outs aNote, aNote
 
 endin
-
-$TIMBRE(k'FilterQ)

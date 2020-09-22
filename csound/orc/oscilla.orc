@@ -5,6 +5,6 @@ nchnls = 2
 
 #include "../orc/timbre.orc"
 
-$TIMBRE(i'Detune)
+$TIMBRE(i'Detune'0)
 
 #include "../orc/moog.orc"

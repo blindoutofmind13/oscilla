@@ -1,7 +1,7 @@
-#define TIMBRE( RATE' NAME )
+#define TIMBRE( RATE' NAME' INITIAL )
 #
 
-g$RATE$NAME init 0
+g$RATE$NAME init $INITIAL
 
 instr $NAME
 
