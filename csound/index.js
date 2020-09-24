@@ -18,6 +18,7 @@ paths: [
 '/typist/prompt.js',
 '/oscilla/csound/pitch.js',
 '/oscilla/csound/detune.js',
+'/oscilla/csound/instrument.js',
 
 ],
 setting: {
@@ -31,7 +32,6 @@ port: 1300,
 target: 'ws'
 
 },
-instrument: 1,
 keyboard: {
 
 pitch: "qasedrfjikolp;']",

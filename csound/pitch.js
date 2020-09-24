@@ -1,7 +1,14 @@
+const note = {
+
+pitch: 0,
+detune: 0
+
+};
+
 export const establishment = function establishment () {
 
 const setting = this;
-setting .note = 0;
+setting .note = note;
 
 };
 
@@ -11,7 +18,7 @@ character .events = [ 'pitch' ];
 character .action = function action ( script, cue, blooper ) {
 
 const setting = this;
-const { keyboard } = setting;
+const { keyboard, instrument } = setting;
 const shift = -2;
 let octave = 8;
 let pitch = keyboard .pitch .indexOf ( script .action );
@@ -30,9 +37,9 @@ pitch += 12;
 
 pitch = ( pitch / 100 ) + octave;
 
-if ( script .details === 'off' && setting .note === pitch ) {
+if ( script .details === 'off' && setting .note .pitch === pitch ) {
 
-setting .note = 0;
+setting .note = note;
 
 cue ( 's -1.1 0 0' );
 
@@ -40,12 +47,16 @@ cue ( 's -1.1 0 0' );
 
 else if ( script .details === 'on' ) {
 
-const previousPitch = setting .note;
-setting .note = pitch;
+instrument .previousPitch = setting .note .pitch;
+instrument .previousDetune = setting .note .detune;
+instrument .pitch = pitch;
+instrument .pitchSustain = pitch;
+
+setting .note .pitch = pitch;
 
 cue ( `
 s -1.1 0 0
-s 1.1 0 -1 .1 ${ previousPitch } ${ pitch }\n
+s 1.1 0 -1 ${ Object .values ( instrument ) .join ( ' ' ) }
 ` );
 
 }
