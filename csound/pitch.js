@@ -1,7 +1,7 @@
 export const establishment = function establishment () {
 
 const setting = this;
-setting .note = null;
+setting .note = 0;
 
 };
 
@@ -32,17 +32,21 @@ pitch = ( pitch / 100 ) + octave;
 
 if ( script .details === 'off' && setting .note === pitch ) {
 
-setting .note = null;
+setting .note = 0;
 
-cue ( 's -1 0 0' );
+cue ( 's -1.1 0 0' );
 
 }
 
 else if ( script .details === 'on' ) {
 
+const previousPitch = setting .note;
 setting .note = pitch;
 
-cue ( `s 1 0 -1 ${ pitch }\n` );
+cue ( `
+s -1.1 0 0
+s 1.1 0 -1 .1 ${ previousPitch } ${ pitch }\n
+` );
 
 }
 
