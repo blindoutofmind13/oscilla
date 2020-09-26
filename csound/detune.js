@@ -11,12 +11,12 @@ const { instrument } = this;
 switch ( script .action ) {
 
 case 'g':
-instrument .detune--;
+instrument .detune .value--;
 
 break;
 
 case 'h':
-instrument .detune++;
+instrument .detune .value++;
 
 }
 

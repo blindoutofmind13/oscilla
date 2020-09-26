@@ -1,24 +1,28 @@
+import { Attribute } from './attribute.js';
+
 export const establishment = function establishment () {
 
 const setting = this;
-setting .instrument = {
+const instrument = setting .instrument = {
 
-loudness: .4,
-loudnessAttack: .1,
-loudnessDecay: .1,
-loudnessSustain: .2,
-loudnessRelease: .1,
+loudness: new Attribute ( 63 ),
+loudnessAttack: new Attribute ( 12 ),
+loudnessDecay: new Attribute ( 12 ),
+loudnessSustain: new Attribute ( 32 ),
+loudnessRelease: new Attribute ( 12 ),
 
-detune: 0,
-pitch: 0,
-pitchAttack: .1,
-pitchDecay: .01,
-pitchSustain: 0,
-previousDetune: 0,
-previousPitch: 0,
-
-wave: 1
+detune: new Attribute (),
+pitch: new Attribute (),
+pitchAttack: new Attribute ( 12 ),
+pitchDecay: new Attribute ( 12 ),
+pitchSustain: new Attribute (),
+previousDetune: new Attribute (),
+previousPitch: new Attribute (),
 
 };
+
+instrument .wave = new Attribute ();
+instrument .wave .coefficient = 1;
+instrument .wave .assign ( '=', 1 );
 
 };

@@ -47,17 +47,25 @@ cue ( 's -1.1 0 0' );
 
 else if ( script .details === 'on' ) {
 
-instrument .previousPitch = setting .note .pitch;
-instrument .previousDetune = setting .note .detune;
-instrument .pitch = pitch;
-instrument .pitchSustain = pitch;
+instrument .previousPitch .value = setting .note .pitch;
+instrument .previousDetune .value = setting .note .detune;
+instrument .pitch .value = pitch;
+instrument .pitchSustain .value = pitch;
 
 setting .note .pitch = pitch;
 
-cue ( `
+const score = `
 s -1.1 0 0
-s 1.1 0 -1 ${ Object .values ( instrument ) .join ( ' ' ) }
-` );
+s 1.1 0 -1 ${ Object .values ( instrument ) .map ( ( attribute ) => {
+
+return attribute .value;
+
+} ) .join ( ' ' ) }
+`;
+
+console .log ( score );
+
+cue ( score );
 
 }
 

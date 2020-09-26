@@ -19,6 +19,8 @@ paths: [
 '/oscilla/csound/pitch.js',
 '/oscilla/csound/detune.js',
 '/oscilla/csound/instrument.js',
+'/oscilla/csound/wave.js',
+'/oscilla/csound/envelope.js'
 
 ],
 setting: {
@@ -35,7 +37,9 @@ target: 'ws'
 keyboard: {
 
 pitch: "qasedrfjikolp;']",
-detune: 'gh'
+detune: 'gh',
+wave: '123',
+envelope: 'zZxXcCvVbB'
 
 }
 
