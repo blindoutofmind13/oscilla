@@ -38,8 +38,8 @@ keyboard: {
 
 pitch: "qasedrfjikolp;']",
 detune: 'gh',
-wave: '123',
-envelope: 'zZxXcCvVbB'
+wave: '1234567',
+envelope: 'zZxXcCvVbBmM'
 
 }
 

@@ -7,7 +7,7 @@ if ( script .details !== 'off' )
 return;
 
 const { instrument } = this;
-const attributes = [];
+let attributes = [];
 
 switch ( script .action ) {
 
@@ -40,6 +40,25 @@ break;
 case 'b':
 case 'B':
 attributes .push ( 'loudnessRelease' );
+
+break;
+
+case 'm':
+case 'M':
+attributes = attributes .concat ( [
+
+'loudnessAttack',
+'loudnessDecay',
+'loudnessRelease',
+'pitchAttack',
+'pitchDecay'
+
+] );
+
+break;
+
+default:
+return;
 
 }
 

@@ -63,7 +63,7 @@ return attribute .value;
 } ) .join ( ' ' ) }
 `;
 
-console .log ( score );
+//console .log ( score );
 
 cue ( score );
 
