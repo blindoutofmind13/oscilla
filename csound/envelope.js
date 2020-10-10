@@ -13,52 +13,36 @@ switch ( script .action ) {
 
 case 'z':
 case 'Z':
-attributes .push ( 'loudness' );
+attributes .push ( 'attack' );
 
 break;
 
 case 'x':
 case 'X':
-attributes .push ( 'loudnessAttack' );
-attributes .push ( 'pitchAttack' );
+attributes .push ( 'decay' );
 
 break;
 
 case 'c':
 case 'C':
-attributes .push ( 'loudnessDecay' );
-attributes .push ( 'pitchDecay' );
+attributes .push ( 'release' );
 
 break;
 
 case 'v':
 case 'V':
-attributes .push ( 'loudnessSustain' );
-
-break;
-
-case 'b':
-case 'B':
-attributes .push ( 'loudnessRelease' );
-
-break;
-
-case 'm':
-case 'M':
 attributes = attributes .concat ( [
 
-'loudnessAttack',
-'loudnessDecay',
-'loudnessRelease',
-'pitchAttack',
-'pitchDecay'
+'attack',
+'decay',
+'release'
 
 ] );
 
 break;
 
 default:
-return;
+cue ();
 
 }
 

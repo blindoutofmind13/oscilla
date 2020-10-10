@@ -5,19 +5,17 @@ export const establishment = function establishment () {
 const setting = this;
 const instrument = setting .instrument = {
 
-loudness: new Attribute ( 63 ),
-loudnessAttack: new Attribute ( 1 ),
-loudnessDecay: new Attribute ( 1 ),
-loudnessSustain: new Attribute ( 32 ),
-loudnessRelease: new Attribute ( 1 ),
+loudnessA: new Attribute ( 64 ),
+loudnessS: new Attribute ( 32 ),
 
 detune: new Attribute (),
+detuneA: new Attribute (),
+detuneR: new Attribute (),
 pitch: new Attribute (),
-pitchAttack: new Attribute ( 1 ),
-pitchDecay: new Attribute ( 1 ),
-pitchSustain: new Attribute (),
-previousDetune: new Attribute (),
-previousPitch: new Attribute (),
+
+attack: new Attribute ( 0 ),
+decay: new Attribute ( 0 ),
+release: new Attribute ( 0 ),
 
 };
 
