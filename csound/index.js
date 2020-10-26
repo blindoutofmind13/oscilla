@@ -16,11 +16,7 @@ paths: [
 '/typist/input/ws.js',
 '/maitre/prompt.js',
 '/typist/prompt.js',
-'/oscilla/csound/pitch.js',
-'/oscilla/csound/detune.js',
-'/oscilla/csound/instrument.js',
-'/oscilla/csound/wave.js',
-'/oscilla/csound/envelope.js'
+'/oscilla/csound/synth/index.js'
 
 ],
 setting: {
@@ -33,14 +29,6 @@ host: 'localhost',
 port: 1300,
 target: 'ws'
 
-},
-keyboard: {
-
-pitch: "qasedrfjikolp;']",
-detune: 'gh',
-wave: '1234567',
-envelope: 'zZxXcCvVbBmM'
-
 }
 
 },
@@ -49,7 +37,7 @@ establish: true
 } )
 .then ( () => {
 
-scenarist .display = 'oscilla';
+scenarist .display = 'synth';
 
 } );
 
