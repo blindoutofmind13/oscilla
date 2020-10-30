@@ -1,6 +1,3 @@
-#define P #p ( iP )
-iP = iP + 1#
-
 iLoudnessA = $P
 iLoudnessS = $P
 

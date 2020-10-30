@@ -7,58 +7,19 @@ if ( script .details !== 'off' )
 return;
 
 const { keyboard, instrument } = this;
-let wave;
+let wave = keyboard .wave .indexOf ( script .action );
 
-switch ( script .action ) {
+console .log ( wave );
 
-case '1':
-wave = 0;
-
-break;
-
-case '2':
-case 'triangle':
-wave = 12;
-
-break;
-
-case '3':
-case 'square':
-wave = 10;
-
-break;
-
-case '4':
-case 'integratedSawtooth':
-wave = 8;
-
-break;
-
-case '5':
-case 'pulse':
-wave = 6;
-
-break;
-
-case '6':
-case 'sawtoothTriangleRamp':
-wave = 4;
-
-break;
-
-case '7':
-case 'squarePWM':
-wave = 2;
-
-break;
-
-default:
+if ( wave < 0 )
 return;
 
-}
+wave--;
 
 instrument .wave .assign ( '=', wave );
 
-cue ();
+cue ( `
+s 1.1 0 -1 ${ instrument .wave .control } ${ instrument .wave .value } 0
+` );
 
 };

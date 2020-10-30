@@ -20,6 +20,8 @@ instrument .detune .value++;
 
 }
 
-cue ();
+cue ( `
+s 1.1 0 -1 ${ instrument .detune .control } ${ instrument .detune .value }
+` );
 
 };

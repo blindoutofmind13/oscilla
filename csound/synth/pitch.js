@@ -41,7 +41,7 @@ if ( script .details === 'off' && setting .note .pitch === pitch ) {
 
 setting .note = note;
 
-cue ( 's -1.1 0 0' );
+cue ( `s 1.1 0 -1 ${ instrument .loudness .control } 0 ${ instrument .pitch .control } 0 0` );
 
 }
 
@@ -52,11 +52,7 @@ instrument .pitch .value = pitch;
 setting .note .pitch = pitch;
 
 const score = `
-s 1.1 0 -1 ${ Object .values ( instrument ) .map ( ( attribute ) => {
-
-return attribute .value;
-
-} ) .join ( ' ' ) }
+s 1.1 0 -1 ${ instrument .loudness .control } ${ instrument .loudness .value } ${ instrument .pitch .control } ${ instrument .pitch .value } 0
 `;
 
 //console .log ( score );

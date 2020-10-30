@@ -1,7 +1,10 @@
-export const Attribute = function Attribute ( value ) {
+export const Attribute = function Attribute ( parameters ) {
 
 const attribute = this;
-attribute .assign ( '=', value );
+
+Object .assign ( attribute, parameters );
+
+attribute .assign ( '=', parameters .offset );
 
 };
 
@@ -27,6 +30,11 @@ break;
 
 case '+':
 attribute .offset += value;
+
+break;
+
+case '-':
+attribute .offset -= value;
 
 break;
 
