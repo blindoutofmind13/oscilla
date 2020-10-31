@@ -28,9 +28,11 @@ initialization:
 prints "\n#initialization"
 
 iLoudness = 0
+iLoudnessSustain = 0
 iPitch = 0
 iDetune = 0
-iTransition = $zero
+iAttack = $zero
+iDecay = $zero
 iWave = -1
 iWaveFT = -1
 
@@ -49,26 +51,30 @@ $IF(1)
 
 iLoudness = iValue
 
-printk 0, kLoudness
-
 else$IF(2)
 
-iPitch = cpspch ( iValue ) * octave ( iDetune )
+iLoudnessSustain = iValue
 
 else$IF(3)
 
-iDetune = iValue
+iPitch = cpspch ( iValue ) * octave ( iDetune )
 
 else$IF(4)
 
-iTransition = iValue
+iDetune = iValue
 
 else$IF(5)
 
-iWave = iValue
-if ( iWave > -1 ) then
+iAttack = iValue
 
-prints "#vco2ft"
+else$IF(6)
+
+iDecay = iValue
+
+else$IF(7)
+
+iWave = iValue
+if ( iWave > -1 || iWave > 4 ) then
 
 iWaveFT vco2ift iPitch, iWave
 
@@ -91,8 +97,8 @@ print iLoudness
 print iPitch
 print iWaveFT
 
-kLoudness linseg i ( kLoudness ), iTransition, iLoudness; , iTransition, 0
-kPitch linseg i ( kPitch ), iTransition, iPitch
+kLoudness linseg i ( kLoudness ), iAttack, iLoudness, iDecay, iLoudnessSustain
+kPitch linseg i ( kPitch ), iAttack, iPitch
 
 aNote poscil kLoudness, kPitch, iWaveFT, iNote * -1
 

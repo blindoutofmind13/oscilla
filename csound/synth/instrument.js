@@ -14,6 +14,15 @@ coefficient: 1 / 87
 
 } );
 
+instrument .attribute ( 'loudnessSustain', {
+
+offset: 32,
+min: 0,
+max: 87,
+coefficient: 1 / 87
+
+} );
+
 instrument .attribute ( 'pitch', {
 
 offset: 0,
@@ -32,9 +41,17 @@ max: 5
 
 } );
 
-instrument .attribute ( 'transition', {
+instrument .attribute ( 'attack', {
 
-offset: 16
+offset: 1,
+max: Infinity
+
+} );
+
+instrument .attribute ( 'decay', {
+
+offset: 1,
+max: Infinity
 
 } );
 

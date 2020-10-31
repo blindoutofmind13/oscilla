@@ -29,17 +29,49 @@ break;
 
 case 'x':
 
-instrument .transition .assign ( '+', 1 );
+instrument .attack .assign ( '+', 1 );
 
-score = `s 1.1 0 -1 ${ instrument .transition .control } ${ instrument .transition .value } 0`;
+score = `s 1.1 0 -1 ${ instrument .attack .control } ${ instrument .attack .value } 0`;
 
 break;
 
 case 'X':
 
-instrument .transition .assign ( '-', 1 );
+instrument .attack .assign ( '-', 1 );
 
-score = `s 1.1 0 -1 ${ instrument .transition .control } ${ instrument .transition .value } 0`;
+score = `s 1.1 0 -1 ${ instrument .attack .control } ${ instrument .attack .value } 0`;
+
+break;
+
+case 'c':
+
+instrument .decay .assign ( '+', 1 );
+
+score = `s 1.1 0 -1 ${ instrument .decay .control } ${ instrument .decay .value } 0`;
+
+break;
+
+case 'C':
+
+instrument .decay .assign ( '-', 1 );
+
+score = `s 1.1 0 -1 ${ instrument .decay .control } ${ instrument .decay .value } 0`;
+
+break;
+
+case 'v':
+
+instrument .loudnessSustain .assign ( '+', 1 );
+
+score = `s 1.1 0 -1 ${ instrument .loudnessSustain .control } ${ instrument .loudnessSustain .value } 0`;
+
+break;
+
+case 'V':
+
+instrument .loudnessSustain .assign ( '-', 1 );
+
+score = `s 1.1 0 -1 ${ instrument .loudnessSustain .control } ${ instrument .loudnessSustain .value } 0`;
 
 break;
 
