@@ -1,4 +1,10 @@
-#define IF(CONTROLLER) #if ( iControl == $CONTROLLER ) then#
+#define controller(NAME) #iController = iController + 1
+i$NAME.Controller = iController#
+
+#define if(CONTROLLER'OPERATOR'PARAMETERS) #if ( iControl == i$CONTROLLER.Controller ) then
+
+i$CONTROLLER $OPERATOR $PARAMETERS#
+
 #define zero #.00000001#
 
 #define P #p ( iP )
@@ -27,6 +33,16 @@ initialization:
 
 prints "\n#initialization"
 
+iController = 0
+
+$controller(Loudness)
+$controller(LoudnessSustain)
+$controller(Pitch)
+$controller(Detune)
+$controller(Attack)
+$controller(Decay)
+$controller(Wave)
+
 iLoudness = 0
 iLoudnessSustain = 0
 iPitch = 0
@@ -47,40 +63,27 @@ prints "\n#note"
 
 while ( iControl != 0 ) do
 
-$IF(1)
+$if(Loudness'='iValue)
 
-iLoudness = iValue
+else$if(LoudnessSustain'='iValue)
 
-else$IF(2)
+else$if(Pitch'cps2pch'iValue, 12)
 
-iLoudnessSustain = iValue
+iPitch = iPitch * octave ( iDetune )
 
-else$IF(3)
+else$if(Detune'='iValue)
 
-iPitch = cpspch ( iValue ) * octave ( iDetune )
+else$if(Attack'='iValue)
 
-else$IF(4)
+else$if(Decay'='iValue)
 
-iDetune = iValue
+else$if(Wave'='iValue)
 
-else$IF(5)
-
-iAttack = iValue
-
-else$IF(6)
-
-iDecay = iValue
-
-else$IF(7)
-
-iWave = iValue
 if ( iWave > -1 || iWave > 4 ) then
 
 iWaveFT vco2ift iPitch, iWave
 
 else
-
-prints "#sine"
 
 iWaveFT = -1
 
