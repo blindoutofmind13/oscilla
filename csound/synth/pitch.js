@@ -39,23 +39,23 @@ pitch = ( pitch / 100 ) + octave;
 
 if ( script .details === 'off' && setting .note .pitch === pitch ) {
 
-setting .note = note;
+setting .note .pitch = 0;
 
-cue ( `s 1.1 0 -1 ${ instrument .loudness .control } 0 ${ instrument .pitch .control } 0 0` );
+cue ( `s 1.1 0 -1 ${ instrument .controller ( 'loudness', 0 ) } ${ instrument .controller ( 'loudnessSustain', 0 ) } ${ instrument .controller ( 'release' ) } 0` );
 
 }
 
-else if ( script .details === 'on' ) {
+else if ( script .details === 'on' && setting .note .pitch !== pitch ) {
 
-instrument .pitch .value = pitch;
+instrument .attributes .pitch .value = pitch;
 
 setting .note .pitch = pitch;
 
 const score = `
-s 1.1 0 -1 ${ instrument .loudness .control } ${ instrument .loudness .value } ${ instrument .pitch .control } ${ instrument .pitch .value } 0
+s 1.1 0 -1 ${ instrument .controller ( 'loudness' ) } ${ instrument .controller ( 'loudnessSustain' ) } ${ instrument .controller ( 'pitch' ) } ${
+instrument .controller ( 'attack' )
+} 0
 `;
-
-//console .log ( score );
 
 cue ( score );
 

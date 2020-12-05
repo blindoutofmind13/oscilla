@@ -7,21 +7,22 @@ if ( script .details !== 'off' )
 return;
 
 const { instrument } = this;
+const attribute = instrument .attribute ( 'detune' );
 
 switch ( script .action ) {
 
 case 'g':
-instrument .detune .value--;
+attribute .assign ( '+', -1 );
 
 break;
 
 case 'h':
-instrument .detune .value++;
+attribute .assign ( '+', 1 );
 
 }
 
 cue ( `
-s 1.1 0 -1 ${ instrument .detune .control } ${ instrument .detune .value }
+s 1.1 0 -1 ${ instrument .controller ( 'detune' ) } 0
 ` );
 
 };

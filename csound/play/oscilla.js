@@ -1,6 +1,5 @@
 import Emitter from 'events';
 import score from './score.js';
-import wave from './wave.js';
 
 export const Play = function Oscilla ( contrato ) {
 
@@ -13,11 +12,11 @@ const teatro = this;
 scenarist .scenario ( {
 
 name: 'oscilla',
-cast: [ score, wave ],
+cast: [ score ],
 setting: {
 
 teatro: teatro,
-prompt: '\n?oscilla\n... ',
+prompt: '#oscilla',
 contrato: contrato
 
 },

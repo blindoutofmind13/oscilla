@@ -7,6 +7,7 @@ if ( script .details !== 'off' )
 return;
 
 const { keyboard, instrument } = this;
+const attribute = instrument .attribute ( 'wave' );
 let wave = keyboard .wave .indexOf ( script .action );
 
 console .log ( wave );
@@ -16,10 +17,10 @@ return;
 
 wave--;
 
-instrument .wave .assign ( '=', wave );
+attribute .assign ( '=', wave );
 
 cue ( `
-s 1.1 0 -1 ${ instrument .wave .control } ${ instrument .wave .value } 0
+s 1.1 0 -1 ${ instrument .controller ( 'wave' ) } 0
 ` );
 
 };

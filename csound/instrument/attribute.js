@@ -1,10 +1,8 @@
-export const Attribute = function Attribute ( parameters ) {
+export const Attribute = function Attribute ( controller ) {
 
 const attribute = this;
 
-Object .assign ( attribute, parameters );
-
-attribute .assign ( '=', parameters .offset );
+attribute .control = controller;
 
 };
 

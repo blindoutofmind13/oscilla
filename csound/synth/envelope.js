@@ -7,71 +7,78 @@ if ( script .details !== 'off' )
 return;
 
 const { instrument } = this;
-let score;
+let key;
+let assignment;
 
 switch ( script .action ) {
 
 case 'z':
 
-instrument .loudness .assign ( '+', 1 );
-
-score = `s 1.1 0 -1 ${ instrument .loudness .control } ${ instrument .loudness .value } 0`;
+key = 'loudness';
+assignment = 1;
 
 break;
 
 case 'Z':
 
-instrument .loudness .assign ( '-', 1 );
-
-score = `s 1.1 0 -1 ${ instrument .loudness .control } ${ instrument .loudness .value } 0`;
+key = 'loudness';
+assignment = -1;
 
 break;
 
 case 'x':
 
-instrument .attack .assign ( '+', 1 );
-
-score = `s 1.1 0 -1 ${ instrument .attack .control } ${ instrument .attack .value } 0`;
+key = 'attack';
+assignment = 1;
 
 break;
 
 case 'X':
 
-instrument .attack .assign ( '-', 1 );
-
-score = `s 1.1 0 -1 ${ instrument .attack .control } ${ instrument .attack .value } 0`;
+key = 'attack';
+assignment = -1;
 
 break;
 
 case 'c':
 
-instrument .decay .assign ( '+', 1 );
-
-score = `s 1.1 0 -1 ${ instrument .decay .control } ${ instrument .decay .value } 0`;
+key = 'decay';
+assignment = 1;
 
 break;
 
 case 'C':
 
-instrument .decay .assign ( '-', 1 );
-
-score = `s 1.1 0 -1 ${ instrument .decay .control } ${ instrument .decay .value } 0`;
+key = 'decay';
+assignment = -1;
 
 break;
 
 case 'v':
 
-instrument .loudnessSustain .assign ( '+', 1 );
-
-score = `s 1.1 0 -1 ${ instrument .loudnessSustain .control } ${ instrument .loudnessSustain .value } 0`;
+key = 'loudnessSustain';
+assignment = 1;
 
 break;
 
 case 'V':
 
-instrument .loudnessSustain .assign ( '-', 1 );
+key = 'loudnessSustain';
+assignment = -1;
 
-score = `s 1.1 0 -1 ${ instrument .loudnessSustain .control } ${ instrument .loudnessSustain .value } 0`;
+break;
+
+case 'b':
+
+key = 'release';
+assignment = 1;
+
+break;
+
+case 'B':
+
+key = 'release';
+assignment = -1;
 
 break;
 
@@ -79,6 +86,10 @@ default:
 return;
 
 }
+
+const attribute = instrument .attribute ( key );
+attribute .assign ( '+', assignment );
+const score = `s 1.1 0 -1 ${ instrument .controller ( key ) } 0`;
 
 cue ( score );
 

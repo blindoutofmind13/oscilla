@@ -55,9 +55,16 @@ max: Infinity
 
 } );
 
+instrument .attribute ( 'release', {
+
+offset: 1,
+max: Infinity
+
+} );
+
 instrument .attribute ( 'wave', {
 
-offset: -1,
+offset: 0,
 coefficient: 1,
 min: -1
 

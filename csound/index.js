@@ -14,8 +14,10 @@ paths: [
 '/typist/input/script.js',
 '/typist/input/action.js',
 '/typist/input/ws.js',
+
 '/maitre/prompt.js',
-'/typist/prompt.js',
+'/oscilla/csound/prompt.js',
+
 '/oscilla/csound/synth/index.js'
 
 ],

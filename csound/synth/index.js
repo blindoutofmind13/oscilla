@@ -43,6 +43,15 @@ event: 'keyboard'
 
 } );
 
+} )
+.then ( () => {
+
+scenarist .play ( {
+
+event: 'ws'
+
+} );
+
 } );
 
 };

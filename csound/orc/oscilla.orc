@@ -37,10 +37,12 @@ iController = 0
 
 $controller(Loudness)
 $controller(LoudnessSustain)
-$controller(Pitch)
+$controller(PitchOriginal)
 $controller(Detune)
 $controller(Attack)
 $controller(Decay)
+$controller(Release)
+
 $controller(Wave)
 
 iLoudness = 0
@@ -49,6 +51,8 @@ iPitch = 0
 iDetune = 0
 iAttack = $zero
 iDecay = $zero
+iRelease = $zero
+
 iWave = -1
 iWaveFT = -1
 
@@ -67,15 +71,20 @@ $if(Loudness'='iValue)
 
 else$if(LoudnessSustain'='iValue)
 
-else$if(Pitch'cps2pch'iValue, 12)
+else$if(PitchOriginal'cps2pch'iValue, 12)
 
-iPitch = iPitch * octave ( iDetune )
+iPitch = iPitchOriginal * octave ( iDetune )
 
 else$if(Detune'='iValue)
+
+iPitch = iPitchOriginal * octave ( iDetune )
 
 else$if(Attack'='iValue)
 
 else$if(Decay'='iValue)
+
+else$if(Release'='iValue)
+iAttack = iRelease
 
 else$if(Wave'='iValue)
 
