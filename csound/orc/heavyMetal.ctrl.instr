@@ -1,0 +1,3 @@
+elseif ( iSynth == iHeavyMetalSynth ) then
+
+aNote STKShakers iPitch, iLoudness

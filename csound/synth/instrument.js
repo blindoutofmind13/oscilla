@@ -44,6 +44,7 @@ max: 5
 instrument .attribute ( 'attack', {
 
 offset: 1,
+coefficient: 1 / 127,
 max: Infinity
 
 } );

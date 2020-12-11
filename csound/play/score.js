@@ -24,10 +24,10 @@ synthesizer .stdin .setEncoding ( encoding );
 synthesizer .stdout .setEncoding ( encoding );
  synthesizer .stderr .setEncoding ( encoding );
 
-/*
+// /*
 synthesizer .stdout .pipe ( process .stdout );
 synthesizer .stderr .pipe ( process .stderr );
-*/
+// */
 
 [ 'data', 'close', 'end', 'error' ] .forEach ( ( event ) => {
 

@@ -14,7 +14,7 @@ setting .note = note;
 
 export const character = {};
 
-character .events = [ 'pitch' ];
+character .events = [ 'play', '#play', 'pitch', '#pitch', '#p' ];
 character .action = function action ( script, cue, blooper ) {
 
 const setting = this;
@@ -41,7 +41,8 @@ if ( script .details === 'off' && setting .note .pitch === pitch ) {
 
 setting .note .pitch = 0;
 
-cue ( `s 1.1 0 -1 ${ instrument .controller ( 'loudness', 0 ) } ${ instrument .controller ( 'loudnessSustain', 0 ) } ${ instrument .controller ( 'release' ) } 0` );
+//cue ( `s 1.1 0 -1 ${ instrument .controller ( 'loudness' ) } ${ instrument .controller ( 'loudnessSustain' ) } ${ instrument .controller ( 'release' ) } 0` );
+cue ( 's 1.1 0 -1 -1' );
 
 }
 

@@ -12,7 +12,7 @@ name: 'synth',
 paths: [
 
 `${ path }/instrument.js`,
-`${ path }/pitch.js`,
+`${ path }/play.js`,
 `${ path }/detune.js`,
 `${ path }/envelope.js`,
 `${ path }/wave.js`

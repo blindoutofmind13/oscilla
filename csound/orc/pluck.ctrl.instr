@@ -1,0 +1,10 @@
+if ( iSynth == iPluckSynth ) then
+
+$control(Pick)
+$control(Reflection)
+
+aExciter oscil 1, 1, -1
+
+aNote repluck iPluckPoint, iLoudness, iPitch, kPick, kReflection, aExciter
+
+;aNote pluck kLoudness, kPitch, iPitch, iCyclicDecayFT, iDecayMethod, iParameter1, iParameter2
