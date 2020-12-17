@@ -1,22 +1,27 @@
 export const character = {};
 
-character .events = [ '#p', 'parameter' ];
+character .events = [ '#p', '#parameter' ];
 character .action = function action ( script, cue, blooper ) {
 
 const { oscilla } = this;
-let [ node, parameter, value, delay ] = script .details;
-value = parseFloat ( value );
-delay = parseFloat	 ( value );
 
 switch ( script .action ) {
 
 case '#s':
-case 'set':
+case '#set':
+
+( ( [ node, parameter, value, delay ] ) => {
+
+value = parseFloat ( value ) || 0;
+delay = parseFloat ( delay ) || 0;
 
 oscilla .graph [ node ] [ parameter ]
 .cancelScheduledValues ( oscilla .context .currentTime );
+
 oscilla .graph [ node ] [ parameter ]
-.setValueAtTime ( value, oscilla .context .currentTime );
+.setValueAtTime ( value, oscilla .context .currentTime + delay );
+
+} ) ( script .details );
 
 }
 
