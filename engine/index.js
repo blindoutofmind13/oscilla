@@ -11,8 +11,8 @@ oscilla .graph = {};
 
 scenarist .scenario ( {
 
-parent: 'oscilla',
-name: 'engine',
+basis: [ 'oscilla' ],
+signature: 'engine',
 paths: [
 
 '/oscilla/engine/node.js',

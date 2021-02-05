@@ -1,27 +1,43 @@
-export const character = {};
+export const events = [ '#n', '#node' ];
+export const action = {};
 
-character .events = [ '#n', '#node' ];
-character .action = function action ( script, cue, blooper ) {
+action [ '.c' ] = action [ '.create' ] = function create ( event, action, ... details ) {
 
 const { oscilla } = this;
 
-switch ( script .action ) {
+switch ( details .length ) {
 
-case '#c':
-case '#create':
+case 0:
 
-( ( [ node, type ] ) => {
+Object .keys ( oscilla .context )
+.filter ( property => typeof property === 'string' ? property .startsWith ( 'create' ) : false )
+.forEach ( type => {
 
-oscilla .graph [ node ] = oscilla .context [ 'create' + type ] ();
+const radio = document .createElement ( 'button' );
 
-} ) ( script .details );
+radio .type = 'button';
+radio .onclick = () => oscilla .context [ factory ] ();
+
+} );
 
 break;
 
-case '#o':
-case '#connect':
+default:
 
-( ( [ node, destination, parameter ] ) => {
+const [ node, type ] = details;
+
+const node = document .createElement ( 'section' );
+
+oscilla .graph [ node ] = oscilla .context [ 'create' + type ] ();
+
+}
+
+};
+
+action [ '.o' ] = action [ '.connect' ] = function connect ( event, action, ... details ) {
+
+const { oscilla } = this;
+const [ node, destination, parameter ] = details;
 
 oscilla .graph [ node ] .connect (
 destination === '#destination' ? oscilla .graph [ node ] .connect ( oscilla .context .destination ) :

@@ -1,29 +1,29 @@
-import { Scenarist } from '/scenarist/index.js';
+import Scenarist from '/scenarist/index.js';
+import Cursor from '/cursor/index.js';
 
-window .onload = () => {
+const Context = window .AudioContext || window .WebkitAudioContext;
 
-const scenarist = new Scenarist ();
-scenarist .scenario ( {
+window .onload = async () => {
 
-name: 'oscilla',
-paths: [
+const oscilla = {};
 
-'/typist/output.js',
-'/typist/stage.js',
-'/typist/input.js',
-'/typist/input/script.js',
-'/typist/input/action.js',
+oscilla .context = new Context ();
+oscilla .design = new Cursor ();
 
-'/oscilla/engine/index.js'
+const scenarist = oscilla .scenarist = new Scenarist ();
+const scenario = scenarist .start ( {
 
-],
-establish: true
+signature: 'oscilla',
+scenes: await Promise .all ( [
 
-} )
-.then ( () => {
+'/botta/bot.js',
+'./design.js'
 
-scenarist .display = 'engine';
+] .map ( path => import ( path ) ) ),
+setting: oscilla
 
 } );
+
+scenario .play ( '#design', '.create' );
 
 };
