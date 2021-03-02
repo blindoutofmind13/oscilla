@@ -1,29 +1,42 @@
-import Scenarist from '/scenarist/index.js';
-import Cursor from '/cursor/index.js';
+import Scenarist from '/scenarist/module/scenarist.mjs';
+import tune from './tune.js';
+import note from './note.js';
 
 const Context = window .AudioContext || window .WebkitAudioContext;
 
-window .onload = async () => {
+window .onload = () => {
 
-const oscilla = {};
+const $ = Scenarist ( {} );
 
-oscilla .context = new Context ();
-oscilla .design = new Cursor ();
+$ ( 'page', document );
+$ ( tune, 'tune' );
+$ ( 'noteOn', $ .branch (), 'on', 'keydown' );
+$ ( 'noteOff', $ .branch (), 'off', 'keyup' );
 
-const scenarist = oscilla .scenarist = new Scenarist ();
-const scenario = scenarist .start ( {
+$ ( 'tune', `qasedrfjikolp;']`, 'l' );
 
-signature: 'oscilla',
-scenes: await Promise .all ( [
+$ ( 'noteOn', note .on, ... $ ( 'tuning', 'scale' ) );
+$ ( 'noteOff', note .off, ... $ ( 'tuning', 'scale' ) );
 
-'/botta/bot.js',
-'./design.js'
+$ ( 'noteOff', '=', $ => {
 
-] .map ( path => import ( path ) ) ),
-setting: oscilla
+$ = $ .Scenario;
+
+$ ( 'engine', new Context () );
+$ ( 'note', {} );
+$ ( 'loudness', {} );
+
+$ ( 'tuning', 'scale', 'forEach', key => {
+
+$ ( 'loudness', key, $ ( 'engine', 'createGain' ) );
+$ ( 'loudness', key, 'gain', 'setValueAtTime', .1, $ ( 'engine', 'currentTime' ) );
+
+$ ( 'loudness', key, 'connect', $ ( 'engine', 'destination' ) );
 
 } );
 
-scenario .play ( '#design', '.create' );
+} );
+
+document .onkeydown = document .onkeyup = ( { key, type } ) => $ ( type, key );
 
 };
